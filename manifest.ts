@@ -1,5 +1,6 @@
 import { Manifest } from "deno-slack-sdk/mod.ts";
-import GreetingWorkflow from "./workflows/greeting_workflow.ts";
+import SampleWorkflow from "./workflows/sample_workflow.ts";
+import SampleObjectDatastore from "./datastores/sample_datastore.ts";
 
 /**
  * The app manifest contains the app's configuration. This
@@ -8,10 +9,16 @@ import GreetingWorkflow from "./workflows/greeting_workflow.ts";
  */
 export default Manifest({
   name: "slack-deno-notice-backlog",
-  description:
-    "A sample that demonstrates using a function, workflow and trigger to send a greeting",
+  description: "A template for building Slack apps with Deno",
   icon: "assets/icon.png",
-  workflows: [GreetingWorkflow],
+  workflows: [SampleWorkflow],
   outgoingDomains: [],
-  botScopes: ["commands", "chat:write", "chat:write.public"],
+  datastores: [SampleObjectDatastore],
+  botScopes: [
+    "commands",
+    "chat:write",
+    "chat:write.public",
+    "datastore:read",
+    "datastore:write",
+  ],
 });

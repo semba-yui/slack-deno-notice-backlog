@@ -1,7 +1,7 @@
-# Deno Hello World Slack App
+# Deno Starter Template
 
-This sample app demonstrates how to use a function, workflow, and trigger to
-send a greeting to channel.
+This is a scaffolded Deno template used to build out Slack apps using the Slack
+CLI.
 
 **Guide Outline**:
 
@@ -10,6 +10,7 @@ send a greeting to channel.
   - [Clone the Template](#clone-the-template)
 - [Create a Link Trigger](#create-a-link-trigger)
 - [Running Your Project Locally](#running-your-project-locally)
+- [Datastores](#datastores)
 - [Testing](#testing)
 - [Deploying Your App](#deploying-your-app)
   - [Viewing Activity Logs](#viewing-activity-logs)
@@ -27,17 +28,17 @@ requires any of [the Slack paid plans](https://slack.com/pricing).
 
 ### Install the Slack CLI
 
-To use this sample, you first need to install and configure the Slack CLI.
+To use this template, you first need to install and configure the Slack CLI.
 Step-by-step instructions can be found in our
 [Quickstart Guide](https://api.slack.com/future/quickstart).
 
-### Clone the Sample
+### Clone the Template
 
 Start by cloning this repository:
 
 ```zsh
 # Clone this project onto your machine
-$ slack create my-app -t slack-samples/deno-hello-world
+$ slack create my-app -t slack-samples/deno-starter-template
 
 # Change into this project directory
 $ cd my-app
@@ -61,11 +62,11 @@ that Shortcut URLs will be different across each workspace, as well as between
 the Workspace that you'd like to create the Trigger in. Each Workspace has a
 development version (denoted by `(dev)`), as well as a deployed version.
 
-To create a Link Trigger for the Workflow in this sample, run the following
+To create a Link Trigger for the Workflow in this template, run the following
 command:
 
 ```zsh
-$ slack trigger create --trigger-def triggers/greeting_trigger.ts
+$ slack trigger create --trigger-def triggers/sample_trigger.ts
 ```
 
 After selecting a Workspace, the output provided will include the Link Trigger
@@ -95,10 +96,17 @@ Once running, click the
 
 To stop running locally, press `<CTRL> + C` to end the process.
 
+## Datastores
+
+If your app needs to store any data, a datastore would be the right place for
+that. For an example of a datastore, see `datastores/sample_datastore.ts`. Using
+a datastore also requires the `datastore:write`/`datastore:read` scopes to be
+present in your manifest.
+
 ## Testing
 
 For an example of how to test a function, see
-`functions/greeting_function_test.ts`. Test filenames should be suffixed with
+`functions/sample_function_test.ts`. Test filenames should be suffixed with
 `_test`.
 
 Run all tests with `deno test`:
@@ -161,6 +169,12 @@ to the next step.
 [Triggers](https://api.slack.com/future/triggers) determine when Workflows are
 executed. A trigger file describes a scenario in which a workflow should be run,
 such as a user pressing a button or when a specific event occurs.
+
+### `/datastores`
+
+[Datastores](https://api.slack.com/future/datastores) can securely store and
+retrieve data for your application. Required scopes to use datastores include
+`datastore:write` and `datastore:read`.
 
 ## Resources
 
